@@ -24,7 +24,7 @@
 			  <div class="panel panel-primary">
 			    <div class="panel-heading">Enter Medicine Detail</div>
 			    <div class="panel-body">
-			      <form>
+			      <form method="post" action="action.php">
 			      	<table class="table table-hover">
 					    <tbody>
 					      <tr>

@@ -29,38 +29,38 @@
 					    <tbody>
 					      <tr>
 					      	<td>
-						      	 <div class="row">
-							      	<div class="col-md-3">
-							      		<label>Medicine Name</label>
-							      	</div>
-							        <div class="col-md-9">
-							      		<input type='text' name='medicine'placeholder="Enter medicine name" class="form-control">
-							      	</div>
-					 	         </div>
+						      <div class="row">
+							    <div class="col-md-3">
+							      <label>Medicine Name</label>
+							    </div>
+							    <div class="col-md-9">
+							      <input type='text' name='medicine'placeholder="Enter medicine name" class="form-control">
+							    </div>
+					 	       </div>
 					        </td>
 					      </tr>
 
 					       <tr>
 					      	<td>
-						      	 <div class="row">
-							      	<div class="col-md-3">
-							      		<label>Quantity</label>
-							      	</div>
-							        <div class="col-md-9">
-							      		<input type='text' name='quantity' placeholder="Enter quantity" class="form-control">
-							      	</div>
-					 	         </div>
+						      <div class="row">
+							     <div class="col-md-3">
+							       <label>Quantity</label>
+							     </div>
+							     <div class="col-md-9">
+							      	<input type='text' name='quantity' placeholder="Enter quantity" class="form-control">
+							     </div>
+					 	       </div>
 					        </td>
 					      </tr>
                           
                           <tr>
 					      	<td>
-						      	 <div class="row">
-							       <div class="col-md-3 col-sm-offset-4">
-							      		<input type='submit' class="form-control btn btn-primary" name="submit" value="Store">
-							       </div>
+						      <div class="row">
+							    <div class="col-md-3 col-sm-offset-4">
+							      <input type='submit' class="form-control btn btn-primary" name="submit" value="Store">
+							    </div>
 							       
-					 	         </div>
+					 	      </div>
 					        </td>
 					      </tr>
 					    </tbody>

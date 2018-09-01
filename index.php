@@ -1,3 +1,5 @@
+<?php include('action.php');?>
+
 <!Doctype html>
 <html lang="en">
   <head>
@@ -34,7 +36,7 @@
 							      <label>Medicine Name</label>
 							    </div>
 							    <div class="col-md-9">
-							      <input type='text' name='medicine'placeholder="Enter medicine name" class="form-control">
+							      <input type='text' name='medicine' placeholder="Enter medicine name" class="form-control">
 							    </div>
 					 	       </div>
 					        </td>
@@ -78,6 +80,7 @@
 	             <div class='row'>
 	             	<div class="col-md-2"></div>
 	             	<div class="col-md-8">
+
 	             		 <table class="table table-bordered">
 						    <thead>
 						      <tr>
@@ -89,14 +92,20 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>1</td>
-						        <td>Doeewererwe</td>
-						        <td>john@example.com</td>
+						      
+						      	<?php 
+						      	$myarray =$obj->fetch_record("medicine");
+						      	foreach($myarray as $row){
+						      		?>
+						      	<tr>
+						      	<td><?php echo $row['id'] ;?></td>
+						        <td><?php echo $row['m_name'];?></td>
+						        <td><?php echo $row['qty'];?></td>
 						        <td><a href=""class="btn btn-primary">Edit</a></td>
 						        <td><a href=""class="btn btn-danger">Delete</a></td>
-						      </tr>
-						      
+						        </tr>
+						      	<?php } ?>
+						       
 						    </tbody>
 						  </table>
 	             	</div>

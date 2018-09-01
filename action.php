@@ -19,6 +19,22 @@ public function insert_records($table,$fields){
    }
      
 }
+  public function fetch_record($table){
+
+  	//Select *from table_name;
+  	$sql='';
+  	$sql.= "Select * from " .$table;	
+  	
+  	$array=array();
+  	$query = mysqli_query($this->con,$sql);
+
+  	while( $row =mysqli_fetch_assoc($query)) {
+      
+      $array[] = $row;
+   }
+    return $array;
+
+  }
 
 }
 
@@ -31,16 +47,20 @@ if( isset( $_POST['submit'] ) ){
      'm_name' =>$_POST['medicine'],
      'qty' =>$_POST['quantity']
     );
+    if($_POST['medicine'] == '' || $_POST['quantity'] =='' ){
 
-    if( $obj->insert_records('medicine',$myarray) ){
+    	header("location:index.php");
+    }
+    else{
+    	 if( $obj->insert_records('medicine',$myarray) ){
 
     	header("location:index.php?msg=Record Inserted Successfull");
     }
+
+    }
+
+   
     
 }
-
-
-
-
 
 ?>

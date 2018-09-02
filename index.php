@@ -26,6 +26,74 @@
 			  <div class="panel panel-primary">
 			    <div class="panel-heading">Enter Medicine Detail</div>
 			    <div class="panel-body">
+           <!--Update Form -->
+                   <?php 
+                     if( isset($_GET["update"]) ){
+                     	if( isset($_GET["id"]) ){
+
+                     		$id =$_GET["id"];
+                     		$where =array('id'=>$id);
+							$s_data =$obj->select_records('medicine',$where);
+							foreach($s_data as $row){
+						      		?>
+				<form method="post" action="action.php">
+			      	<table class="table table-hover">
+					    <tbody>
+					    	<tr>
+					      	<td>
+						      <div class="row">
+							    <div class="col-md-9">
+							      <input type='hidden' name='id' class="form-control"  value="<?php echo $row['id'];?>" >
+							    </div>
+					 	       </div>
+					        </td>
+					      </tr>
+
+					      <tr>
+					      	<td>
+						      <div class="row">
+							    <div class="col-md-3">
+							      <label>Medicine Name</label>
+							    </div>
+							    <div class="col-md-9">
+							      <input type='text' name='medicine' placeholder="Enter medicine name" class="form-control"  value="<?php echo $row['m_name'];?>" >
+							    </div>
+					 	       </div>
+					        </td>
+					      </tr>
+
+					       <tr>
+					      	<td>
+						      <div class="row">
+							     <div class="col-md-3">
+							       <label>Quantity</label>
+							     </div>
+							     <div class="col-md-9">
+							      	<input type='text' name='quantity' placeholder="Enter quantity" class="form-control" value="<?php echo $row['qty'];?>" >
+							     </div>
+					 	       </div>
+					        </td>
+					      </tr>
+         
+                          <tr>
+					      	<td>
+						      <div class="row">
+							    <div class="col-md-3 col-sm-offset-4">
+							      <input type='submit' class="form-control btn btn-primary" name="update" value="Update">
+							    </div>
+							       
+					 	      </div>
+					        </td>
+					      </tr>
+					    </tbody>
+					  </table>
+			      </form>
+			  <?php }
+                     	}
+                      } 
+
+                      else{?>
+                      	<!--Insert Form -->
 			      <form method="post" action="action.php">
 			      	<table class="table table-hover">
 					    <tbody>
@@ -68,6 +136,8 @@
 					    </tbody>
 					  </table>
 			      </form>
+                    <?php  }
+                    ?>
 			    </div>
 			  </div>
   			</div>
@@ -101,8 +171,8 @@
 						      	<td><?php echo $row['id'] ;?></td>
 						        <td><?php echo $row['m_name'];?></td>
 						        <td><?php echo $row['qty'];?></td>
-						        <td><a href=""class="btn btn-primary">Edit</a></td>
-						        <td><a href=""class="btn btn-danger">Delete</a></td>
+						        <td><a href="index.php?update=1&id=<?php echo $row['id'] ;?>" class="btn btn-primary">Edit</a></td>
+						        <td><a href="" class="btn btn-danger">Delete</a></td>
 						        </tr>
 						      	<?php } ?>
 						       

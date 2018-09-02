@@ -36,6 +36,36 @@ public function insert_records($table,$fields){
 
   }
 
+  public function select_records($table,$where){
+
+  	//SELECT * from table_name where condition
+
+  	$sql ='';
+  	$condition ='';
+
+  	foreach($where as $key =>$value){
+  		//id='5'
+  		$condition =$key."= " .$value;
+  	}
+   
+   $sql ="SELECT * from " .$table ." where " .$condition;
+
+   $array =array();
+   $query =mysqli_query($this->con,$sql);
+  	while($row =mysqli_fetch_assoc($query)){
+
+  		$array[] =$row;
+  	}
+
+  	return $array;
+  }
+
+  public function update_records($table,$where){
+
+  	//update table_name SET field1 = new-value1, field2 = new-value2 where condition
+
+  }
+
 }
 
 $obj = new DataOperation;
@@ -57,10 +87,7 @@ if( isset( $_POST['submit'] ) ){
     	header("location:index.php?msg=Record Inserted Successfull");
     }
 
-    }
-
-   
-    
+    }    
 }
 
 ?>

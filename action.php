@@ -88,6 +88,24 @@ public function insert_records($table,$fields){
     }
 }
 
+public function deleted_records($table,$where){
+
+  $sql='';
+  $condition='';
+  foreach($where as $key=>$value)
+  {
+    $condition=$key ." = " .$value;
+  }
+   $sql.="Delete From ".$table. " where " .$condition;
+
+   $query=mysqli_query($this->con,$sql);
+   if($query){
+    return true;
+   }
+ 
+}
+
+
 }
 
 $obj = new DataOperation;
@@ -141,7 +159,18 @@ if( isset( $_POST['update'] ) ){
     }
 
     } 
-  }   
+  } 
+
+  //Deleted Record
+
+  if( isset($_GET['deleted']) ) {
+     $id=$_GET['id'];
+     $where=array('id'=>$id);
+     if( $obj->deleted_records('medicine',$where) )
+     {
+      header('location:index.php?msg=Record Deleted Successfull');
+     }
+  }
   
     
 

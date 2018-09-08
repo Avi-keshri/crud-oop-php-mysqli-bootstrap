@@ -192,7 +192,7 @@
 						        <td><?php echo $row['m_name'];?></td>
 						        <td><?php echo $row['qty'];?></td>
 						        <td><a href="index.php?update=1&id=<?php echo $row['id'] ;?>" class="btn btn-primary">Edit</a></td>
-						        <td><a href="" class="btn btn-danger">Delete</a></td>
+						        <td><a href="action.php?deleted=1&id=<?php echo $row['id'] ;?>" class="btn btn-danger">Delete</a></td>
 						        </tr>
 						      	<?php } ?>
 						       

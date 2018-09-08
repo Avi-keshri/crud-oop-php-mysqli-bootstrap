@@ -105,7 +105,6 @@ public function deleted_records($table,$where){
  
 }
 
-
 }
 
 $obj = new DataOperation;
@@ -172,7 +171,4 @@ if( isset( $_POST['update'] ) ){
      }
   }
   
-    
-
-
 ?>

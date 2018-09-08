@@ -60,16 +60,39 @@ public function insert_records($table,$fields){
   	return $array;
   }
 
-  public function update_records($table,$where){
+  public function update_records($table,$where,$field){
 
   	//update table_name SET field1 = new-value1, field2 = new-value2 where condition
 
-  }
+    $sql ='';
+    $condition='';
+    $sql.="Update ".$table ." set ";
+    foreach($where as $key=>$value)
+    {
+      $condition= $key ." =  ".$value;
+    }
+    foreach ($field as $key=>$value)
+    {
+      if($key!='id'){
+      $sql.=$key ." = '" .$value."' ".",";
+      }
+   }
+    $sql =substr($sql,0,-2);
+    $sql.=" where  " .$condition;
+  
+    $query =mysqli_query($this->con, $sql);
+
+
+    if($query){
+      return true;
+    }
+}
 
 }
 
 $obj = new DataOperation;
 
+//Insert Data
 if( isset( $_POST['submit'] ) ){
 
     $myarray =array(
@@ -89,5 +112,38 @@ if( isset( $_POST['submit'] ) ){
 
     }    
 }
+
+//Update Data
+if( isset( $_POST['update'] ) ){
+
+    $myarray1 =array(
+
+     'id'=>$_POST['id'],
+     'm_name' =>$_POST['medicine'],
+     'qty' =>$_POST['quantity']
+    );
+
+   $id =$_POST["id"];
+   $where =array('id'=>$id);
+   $s_data =$obj->select_records('medicine',$where);
+   foreach($s_data as $row){
+                     
+    $newURL='index.php?update=1&id='.$row['id'];
+   }
+    if($_POST['id'] == '' || $_POST['medicine'] == '' || $_POST['quantity'] =='' ){
+
+    header('Location: '.$newURL);
+  }
+    else{ 
+       if( $obj->update_records('medicine',$where,$myarray1) ){
+
+      header("location:index.php?msg=Record Updated Successfull");
+    }
+
+    } 
+  }   
+  
+    
+
 
 ?>

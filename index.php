@@ -20,6 +20,26 @@
   	</div>
 
   	<div class="container">
+  		<div class='row'>
+  			<div class="col-md-6"></div>
+  			<div class="col-md-3"></div>
+  			<div class="col-md-3">
+  				<?php if( isset($_GET['update'] ) ){?>
+
+  					<a href="index.php"><button class="btn btn-primary">Go to Dashboard</button></a>
+  				<?php }
+                      else{ ?>
+   
+                   <button class="btn btn-primary">Go to Dashboard</button>
+  				<?php }
+
+  				?>
+  				
+  			</div>
+  		</div>
+  	</div>
+
+  	<div class="container">
   		<div class="row">
   			<div class="col-md-3"></div>
   			<div class="col-md-6">	
